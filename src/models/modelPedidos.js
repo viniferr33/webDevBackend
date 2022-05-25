@@ -2,7 +2,7 @@ const Firestore = require('../db/database');
 
 class modelPedido {
     constructor() {
-        this.db = Firestore();
+        this.db = new Firestore();
     }
 
     async getPedido(id) {
@@ -16,14 +16,14 @@ class modelPedido {
     }
 
     async addPedido(obj) {
-        if(!validateSchema(obj))
+        if(!this.validateSchema(obj))
             throw new Error('Object does not match the Schema!');
 
         await this.db.createDoc('pedidos', obj);
     }
 
     async updatePedido(id, obj) {
-        if(!validateSchema(obj))
+        if(!this.validateSchema(obj))
             throw new Error('Object does not match the Schema!');
 
         await this.db.updateDoc(`pedidos/${id}`, obj);

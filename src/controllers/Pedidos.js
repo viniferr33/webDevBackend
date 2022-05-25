@@ -1,4 +1,4 @@
-const modelPedido = require('../models/modelPedido');
+const modelPedido = require('../models/modelPedidos');
 const model = new modelPedido();
 
 async function createPedido(req, res) {
