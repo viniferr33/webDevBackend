@@ -1,13 +1,14 @@
-const cardapio = require('./routes/cardapio');
-const pedidos = require('./routes/pedidos');
-
 const express = require('express');
+const cors = require('cors');
 const server = express();
 
 server.use(express.json());
+server.use(cors({
+    origin: "*"
+}));
 
-server.use('/cardapio', cardapio);
-server.use('/pedidos', pedidos);
+const routes = require('./routes');
+server.use(routes);
 
 server.get('/', (req, res) => {
     res.status(200).json({'Message': 'Ok'});
